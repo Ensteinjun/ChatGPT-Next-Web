@@ -66,6 +66,7 @@ export const useAccessStore = createPersistStore(
     },
 
     isAuthorized() {
+      if (getClientConfig()?.buildMode === "export") return true;
       this.fetch();
 
       // has token or has code or disabled access control
